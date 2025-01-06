@@ -1,8 +1,11 @@
+import { incrementCounter } from './app.js';
+
 /**
  * Generate a MIDI file from user input.
  */
 function generateDynamicMidi() {
   try {
+    incrementCounter("midiGenerator")
     // Get input values from the HTML
     const inputText = document.getElementById("noteInput").value.trim();
     if (!inputText) {
