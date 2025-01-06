@@ -1,5 +1,11 @@
-function generateDynamicMidi() {
+import Midi from "jsmidgen"; // Ensure the jsmidgen library is installed
+
+/**
+ * Generate a MIDI file from user input.
+ */
+export function generateDynamicMidi() {
   try {
+    // Get input values from the HTML
     const inputText = document.getElementById("noteInput").value.trim();
     if (!inputText) {
       alert("Please enter some note lines first!");
@@ -12,6 +18,7 @@ function generateDynamicMidi() {
       return;
     }
 
+    // Create a new MIDI file and track
     const file = new Midi.File();
     const track = new Midi.Track();
     file.addTrack(track);
@@ -63,6 +70,7 @@ function generateDynamicMidi() {
       return;
     }
 
+    // Sort notes by start time
     notesArray.sort((a, b) => a.startTick - b.startTick);
 
     const groupedNotes = [];
@@ -105,6 +113,7 @@ function generateDynamicMidi() {
       lastTick = startTick;
     });
 
+    // Convert MIDI to Base64 for downloading
     const midiBytes = file.toBytes();
     const base64 = btoa(
       midiBytes
@@ -113,6 +122,7 @@ function generateDynamicMidi() {
         .join("")
     );
 
+    // Trigger download
     const link = document.createElement("a");
     link.href = "data:audio/midi;base64," + base64;
     link.download = "dynamic_notes.mid";

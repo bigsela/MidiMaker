@@ -160,25 +160,22 @@ Details:
    - Use one note per line with different \`Start\` times to create a sequence.
    - Specify the timing and duration for each note.
 5. Output the summary first, followed by the formatted notes (copy & paste ready).
-6. Ensure the notes section is clean and copy-paste-ready.
 
 Query:
 ${userQuery}
 
 **Example Outputs:**
 Formatted Notes:
-Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
+Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100
+
+**Important:**
+make it copy-paste-ready.
+`;
 
       document.getElementById("generatedTemplate").textContent = template.trim();
       document.getElementById("outputContainer").style.display = "block";
 
       // Update displayed counters
-      updateCounterDisplay();
-    };
-
-    window.generateDynamicMidi = function () {
-      incrementCounter("midiGenerator");
-      console.log("MIDI generated");
       updateCounterDisplay();
     };
 
@@ -196,7 +193,10 @@ Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
     };
 
 </script>
-
+<script type="module">
+  import { generateDynamicMidi } from "./midiCreator.js";
+  window.generateDynamicMidi = generateDynamicMidi;
+</script>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
