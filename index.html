@@ -122,13 +122,21 @@ Examples:
   <script type="module">
     import { incrementCounter, updateCounterDisplay } from "./app.js";
 
-    function generateTemplate() {
-      incrementCounter("templateGenerator"); // Increment the template counter
-      const userQuery = document.getElementById("queryInput").value.trim();
-      if (!userQuery) {
-        alert("Please enter your query or requirements.");
-        return;
-      }
+    window.generateTemplate = function () {
+    incrementCounter("templateGenerator") // Increment the template counter
+      .then(() => {
+        console.log("Template counter incremented successfully");
+      })
+      .catch((error) => {
+        console.error("Error incrementing template counter:", error);
+        alert("Failed to update template counter. Please try again.");
+      });
+
+    const userQuery = document.getElementById("queryInput").value.trim();
+    if (!userQuery) {
+      alert("Please enter your query or requirements.");
+      return;
+    }
 
       const template = `
 You are a professional producer and composer specializing in creating chord progressions and melodies for various genres. Your role is to craft unique, expressive, and musically rich progressions or melodies based on the details I provide. 
