@@ -138,3 +138,5 @@ export function generateDynamicMidi() {
     alert("An error occurred while generating the MIDI file. Check the console for details.");
   }
 }
+
+window.generateDynamicMidi = generateDynamicMidi;
