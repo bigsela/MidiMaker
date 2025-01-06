@@ -1,1 +1,169 @@
-  <h1> Hello World </h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Advanced MIDI Generator</title>
+  <script src="./jsmidgen.js"></script>
+  <script src="./midiCreator.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .container-left {
+      background-color: #f9f9f9;
+      border-right: 2px solid #ddd;
+    }
+    .container-right {
+      background-color: #fff;
+    }
+    textarea, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left Side: Template Generator -->
+  <div class="container container-left">
+    <h1>Dynamic MIDI Template Generator</h1>
+    <h2>Create Your Custom ChatGPT Query</h2>
+    <p>Fill out the fields below to dynamically generate a query template for creating chords or melodies. Once generated, you can copy and paste it into ChatGPT.</p>
+
+    <label for="queryInput">Enter your query or requirements:</label>
+    <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+
+    <button onclick="generateTemplate()">Generate Template</button>
+
+    <div class="output-container" id="outputContainer" style="display: none;">
+      <h3>Generated Template</h3>
+      <pre id="generatedTemplate"></pre>
+      <button class="copy-button" onclick="copyGeneratedTemplate()">Copy Template</button>
+    </div>
+  </div>
+
+  <!-- Right Side: MIDI Tool -->
+  <div class="container container-right">
+    <h1>Advanced MIDI Generator</h1>
+    <h2>How to Use</h2>
+    <p>Input either single notes or chords using this format:</p>
+    <pre>
+Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
+Examples:
+- Single Note: Note: C4 | Start: 0.0 | Duration: 1.0 | Velocity: 100
+- Chord: Note: A2 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+          Note: C3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+          Note: E3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+    </pre>
+
+    <label for="tempoInput">Tempo (BPM):</label>
+    <input type="number" id="tempoInput" value="120" min="20" max="300" />
+
+    <label for="noteInput">Paste your note lines here:</label>
+    <textarea id="noteInput" placeholder="Paste your note lines here..." rows="10"></textarea>
+
+    <button onclick="generateDynamicMidi()">Generate MIDI</button>
+  </div>
+
+  <script>
+    function generateTemplate() {
+      const userQuery = document.getElementById("queryInput").value.trim();
+      if (!userQuery) {
+        alert("Please enter your query or requirements.");
+        return;
+      }
+
+      const template = `
+You are a professional producer and composer specializing in creating chord progressions and melodies for various genres. Your role is to craft unique, expressive, and musically rich progressions or melodies based on the details I provide. 
+
+I want you to create a chord progression or melody for me in the following format:
+
+Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
+
+Details:
+1. Specify whether the input is a **chord progression** or a **melody**.
+2. Provide a short summary in bullet points:
+   - Provide a meaningful and descriptive name for the file or chord (e.g., "A_minor7_chord," "G7_sus4_chord" for individual chords, or "AfroHouse_Progression_Amin" for a chord progression). For melodies, use a clear and relevant name such as "Melody_Soft_Piano_AfroHouse" to reflect its style and purpose.
+   - Progression: List the chord names (e.g., Fmin9, Dbmaj9, etc.).
+   - Style and mood.
+   - Instrumentation or sound characteristics (e.g., grand piano, soft pads, etc.).
+   - Any notable musical aspects (e.g., emotional, jazzy, harmonic extensions).
+3. For chord progressions:
+   - Use multiple notes with the same \`Start\` time to form a chord.
+   - Each chord should last for [duration in beats or bars].
+4. For melodies:
+   - Use one note per line with different \`Start\` times to create a sequence.
+   - Specify the timing and duration for each note.
+5. Output the summary first, followed by the formatted notes (copy & paste ready).
+6. Ensure the notes section is clean and copy-paste-ready.
+
+Query:
+${userQuery}
+
+**Example Outputs:**
+Formatted Notes:
+Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
+
+      document.getElementById("generatedTemplate").textContent = template.trim();
+      document.getElementById("outputContainer").style.display = "block";
+    }
+
+    function copyGeneratedTemplate() {
+      const templateText = document.getElementById("generatedTemplate").textContent;
+      navigator.clipboard.writeText(templateText).then(() => {
+        alert("Template copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy the template.");
+        console.error("Copy error:", err);
+      });
+    }
+  </script>
+</body>
+</html>
