@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" href="data:,">
   <meta charset="UTF-8" />
   <title>Advanced MIDI Generator</title>
   <script src="./jsmidgen.js"></script>
@@ -164,15 +165,13 @@ Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
 
       // Update displayed counters
       updateCounterDisplay();
-    }
+    };
 
-    function generateDynamicMidi() {
-      incrementCounter("midiGenerator"); // Increment the MIDI counter
+    window.generateDynamicMidi = function () {
+      incrementCounter("midiGenerator");
       console.log("MIDI generated");
-
-      // Update displayed counters
       updateCounterDisplay();
-    }
+    };
 
     // Update counters on page load
     updateCounterDisplay();
