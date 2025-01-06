@@ -184,15 +184,17 @@ Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
 
     // Update counters on page load
     updateCounterDisplay();
-    function copyGeneratedTemplate() {
-    const templateText = document.getElementById("generatedTemplate").textContent;
-    navigator.clipboard.writeText(templateText).then(() => {
-      alert("Template copied to clipboard!");
-    }).catch(err => {
-      alert("Failed to copy the template.");
-      console.error("Copy error:", err);
-    });
-  }
+    
+    window.copyGeneratedTemplate = function () {
+      const templateText = document.getElementById("generatedTemplate").textContent;
+      navigator.clipboard.writeText(templateText).then(() => {
+        alert("Template copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy the template.");
+        console.error("Copy error:", err);
+      });
+    };
+
 </script>
 
   <script type="module" src="./app.js"></script>
