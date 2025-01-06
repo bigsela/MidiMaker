@@ -1,4 +1,5 @@
-import Midi from "jsmidgen"; // Ensure the jsmidgen library is installed
+import Midi from "./jsmidgen.js";
+
 
 /**
  * Generate a MIDI file from user input.
