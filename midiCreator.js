@@ -1,6 +1,3 @@
-import "./jsmidgen.js";
-
-
 /**
  * Generate a MIDI file from user input.
  */

@@ -4,8 +4,8 @@
   <link rel="icon" href="data:,">
   <meta charset="UTF-8" />
   <title>Advanced MIDI Generator</title>
-  <script type="module" src="./jsmidgen.js"></script>
-  <script type="module" src="./midiCreator.js"></script>
+  <script src="./jsmidgen.js"></script>
+  <script src="./midiCreator.js"></script>
   <script type="module" src="./app.js"></script>
   <style>
     body {
@@ -123,7 +123,6 @@ Examples:
   <script type="module">
     import { incrementCounter, updateCounterDisplay } from "./app.js";
 
-    window.generateDynamicMidi = generateDynamicMidi;
 
     window.generateTemplate = function () {
     incrementCounter("templateGenerator") // Increment the template counter
