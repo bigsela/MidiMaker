@@ -122,6 +122,8 @@ Examples:
   <script type="module">
     import { incrementCounter, updateCounterDisplay } from "./app.js";
 
+    window.generateDynamicMidi = generateDynamicMidi;
+
     window.generateTemplate = function () {
     incrementCounter("templateGenerator") // Increment the template counter
       .then(() => {
@@ -193,10 +195,6 @@ make it copy-paste-ready.
     };
 
 </script>
-<script type="module">
-  import { generateDynamicMidi } from "./midiCreator.js";
-  window.generateDynamicMidi = generateDynamicMidi;
-</script>
-  <script type="module" src="./app.js"></script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>

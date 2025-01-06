@@ -1,4 +1,4 @@
-import Midi from "./jsmidgen.js";
+import "./jsmidgen.js";
 
 
 /**
