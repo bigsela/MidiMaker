@@ -74,6 +74,10 @@
   <!-- Left Side: Template Generator -->
   <div class="container container-left">
     <h1>Dynamic MIDI Template Generator</h1>
+    <div>
+      <p>Template Generator Used: <span id="templateCounter">0</span> times</p>
+      <p>MIDI Generator Used: <span id="midiCounter">0</span> times</p>
+    </div>
     <h2>Create Your Custom ChatGPT Query</h2>
     <p>Fill out the fields below to dynamically generate a query template for creating chords or melodies. Once generated, you can copy and paste it into ChatGPT.</p>
 
@@ -112,8 +116,12 @@ Examples:
     <button onclick="generateDynamicMidi()">Generate MIDI</button>
   </div>
 
-  <script>
+  <!-- Inline JavaScript -->
+  <script type="module">
+    import { incrementCounter, updateCounterDisplay } from "./app.js";
+
     function generateTemplate() {
+      incrementCounter("templateGenerator"); // Increment the template counter
       const userQuery = document.getElementById("queryInput").value.trim();
       if (!userQuery) {
         alert("Please enter your query or requirements.");
@@ -153,18 +161,23 @@ Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100`;
 
       document.getElementById("generatedTemplate").textContent = template.trim();
       document.getElementById("outputContainer").style.display = "block";
+
+      // Update displayed counters
+      updateCounterDisplay();
     }
 
-    function copyGeneratedTemplate() {
-      const templateText = document.getElementById("generatedTemplate").textContent;
-      navigator.clipboard.writeText(templateText).then(() => {
-        alert("Template copied to clipboard!");
-      }).catch(err => {
-        alert("Failed to copy the template.");
-        console.error("Copy error:", err);
-      });
+    function generateDynamicMidi() {
+      incrementCounter("midiGenerator"); // Increment the MIDI counter
+      console.log("MIDI generated");
+
+      // Update displayed counters
+      updateCounterDisplay();
     }
+
+    // Update counters on page load
+    updateCounterDisplay();
   </script>
+
   <script type="module" src="./app.js"></script>
 </body>
 </html>
