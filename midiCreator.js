@@ -3,7 +3,7 @@ import { incrementCounter } from './app.js';
 /**
  * Generate a MIDI file from user input.
  */
-function generateDynamicMidi() {
+export function generateDynamicMidi() {
   try {
     incrementCounter("midiGenerator")
     // Get input values from the HTML
