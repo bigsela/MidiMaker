@@ -78,10 +78,19 @@ async function fetchCounter(counterName) {
 async function updateCounterDisplay() {
   const templateCount = await fetchCounter("templateGenerator");
   const midiCount = await fetchCounter("midiGenerator");
+  const pageViews = await fetchCounter("pageViews");
 
   document.getElementById("templateCounter").textContent = templateCount;
   document.getElementById("midiCounter").textContent = midiCount;
+  document.getElementById("pageViewsCounter").textContent = pageViews;
 }
+
+async function incrementPageViews() {
+    await incrementCounter("pageViews");
+  }
+
+incrementPageViews();
+updateCounterDisplay();
 
 // Export the functions for use in other scripts
 export { incrementCounter, updateCounterDisplay };
