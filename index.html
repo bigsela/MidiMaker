@@ -116,7 +116,7 @@ Examples:
     <label for="noteInput">Paste your note lines here:</label>
     <textarea id="noteInput" placeholder="Paste your note lines here..." rows="10"></textarea>
 
-    <button onclick="generateDynamicMidi()">Generate MIDI</button>
+    <button onclick="generateDynamicMidiWithCounter()">Generate MIDI</button>
   </div>
 
   <!-- Inline JavaScript -->
@@ -193,6 +193,22 @@ make it copy-paste-ready.
         console.error("Copy error:", err);
       });
     };
+
+    window.generateDynamicMidiWithCounter = function () {
+    // Increment the MIDI Generator counter
+      incrementCounter("midiGenerator")
+        .then(() => {
+          console.log("MIDI Generator counter incremented successfully");
+          updateCounterDisplay(); // Update the displayed counters
+        })
+        .catch((error) => {
+          console.error("Error incrementing MIDI Generator counter:", error);
+          alert("Failed to update MIDI Generator counter. Please try again.");
+        });
+
+      // Generate the MIDI file
+      generateDynamicMidi();
+  };
 
 </script>
 </body>
