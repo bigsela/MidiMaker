@@ -1,7 +1,7 @@
 /**
  * Generate a MIDI file from user input.
  */
-export function generateDynamicMidi() {
+function generateDynamicMidi() {
   try {
     // Get input values from the HTML
     const inputText = document.getElementById("noteInput").value.trim();
