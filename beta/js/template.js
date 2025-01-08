@@ -31,6 +31,8 @@ Style and Mood: Classic pop/house, uplifting and universally familiar.
 Instrumentation: Grand piano or a bright synth.
 Notable Musical Aspects: Simple and timeless, perfect for a range of genres from pop to electronic.
 
+Formatted Notes:
+
 Note: C2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
 Note: E2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
 Note: G2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
@@ -48,5 +50,5 @@ Note: A1 | Start: 24.0 | Duration: 8.0 | Velocity: 100
 Note: C2 | Start: 24.0 | Duration: 8.0 | Velocity: 100
 
 **Important:**
-make it copy-paste-ready.
+make it copy-paste-ready - *do not* mention chord names or other stuff under the formatted notes!
 `.trim();
