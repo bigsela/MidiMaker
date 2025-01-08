@@ -1,15 +1,22 @@
 /* General styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif; /* Use Poppins */
   margin: 0;
   padding: 0;
-  background-color: #111; /* Dark background for modern look */
+  background-color: #111;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
+}
+
+.header h1 {
+  font-family: 'Poppins', sans-serif; /* Bold and modern */
+  font-weight: 700; /* Bold for the title */
+  font-size: 2.5rem; /* Slightly larger for a modern feel */
+  color: #ff9800; /* Retain the orange color */
 }
 
 /* App container */
@@ -26,11 +33,6 @@ body {
   margin-bottom: 20px;
 }
 
-.header h1 {
-  font-size: 2rem;
-  color: #ff9800; /* Yellowish orange color for header */
-  margin-bottom: 10px;
-}
 
 .header p {
   font-size: 1rem;
@@ -229,4 +231,42 @@ button:hover {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+/* Top Bar Styling */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #111; /* Match the website background */
+  border-bottom: 1px solid #444;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+}
+
+/* Logo Styling */
+.logo {
+  height: 100px; /* Adjust for larger logo size */
+  width: auto;
+   text-align: center;
+  margin-right: 20px; /* Space between logo and title */
+}
+
+/* Title Styling */
+.app-title {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.8rem; /* Slightly larger font size */
+  font-weight: 700;
+  color: #ffcc80; /* Light orange for title text */
+  text-align: center;
+  flex-grow: 1; /* Ensures the title is centered */
+}
+
+/* Optional: For navigation links, if needed later */
+.top-bar nav {
+  margin-left: auto; /* Push navigation to the far right */
 }
