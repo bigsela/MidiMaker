@@ -1,215 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="icon" href="data:,">
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/logo.webp">
+  <link rel="stylesheet" href="./css/styles.css">
   <title>Advanced MIDI Generator</title>
-  <script src="./jsmidgen.js"></script>
-  <script src="./midiCreator.js"></script>
-  <script type="module" src="./app.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-y: auto;
-    }
-    .container-left {
-      background-color: #f9f9f9;
-      border-right: 2px solid #ddd;
-    }
-    .container-right {
-      background-color: #fff;
-    }
-    textarea, input[type="text"], input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-      font-family: monospace;
-      font-size: 14px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border: 1px solid #ccc;
-      overflow-x: auto;
-      font-size: 14px;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    p {
-      font-size: 14px;
-      color: #555;
-    }
-    label {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Left Side: Template Generator -->
-  <div class="container container-left">
-    <h1>Dynamic MIDI Template Generator</h1>
-    <div>
-      <p>Page Views: <span id="pageViewsCounter">0</span></p>
-      <p>Template Generator Used: <span id="templateCounter">0</span> times</p>
-      <p>MIDI Generator Used: <span id="midiCounter">0</span> times</p>
+  <div class="top-bar">
+    <img src="./assets/logo.webp" alt="MIDI Maker Logo" class="logo">
+    <h1 class="app-title">MIDI Maker</h1>
+  </div>
+  <div class="content">
+
+  <div class="app-container">
+    <div class="header">
+      <p>Follow these steps to create and download custom MIDI files effortlessly.</p>
     </div>
-    <h2>Create Your Custom ChatGPT Query</h2>
-    <p>Fill out the fields below to dynamically generate a query template for creating chords or melodies. Once generated, you can copy and paste it into ChatGPT.</p>
+ 
+    <div class="section counters">
+      <div class="counter-item">
+        🎵 Page Views:  <span id="pageViewsCounter">0</span>
+      </div>
+      <div class="counter-item">
+        🎹 Total Templates Created:  <span id="templateCounter">0</span>
+      </div>
+      <div class="counter-item">
+        🎶 MIDI Files Made:  <span id="midiCounter">0</span>
+      </div>
+    </div>
 
-    <label for="queryInput">Enter your query or requirements:</label>
-    <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+    <!-- Step 1: Define Your Query -->
+    <div class="section">
+      <h2>Step 1: Define Your Query</h2>
+      <label for="queryInput">Enter a description of the MIDI you want to create:</label>
+      <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+      <button id="generateTemplateBtn">Generate Query Template</button>
+      <div id="outputContainer" class="output-container" style="display: none;">
+        <h3>Generated Template</h3>
+        <pre id="generatedTemplate"></pre>
+        <button id="sendToChatGPTBtn" class="primary-button">Send to ChatGPT</button>
+        <button id="copyTemplateBtn" class="secondary-button">Copy Template</button>
+      </div>
+    </div>
 
-    <button onclick="generateTemplate()">Generate Template</button>
+    <!-- Step 2: Fetch and Paste Notes -->
+    <div class="section">
+      <h2>Step 2: Paste Notes</h2>
+      <p>Copy output notes from the ChatGPT above:</p>  
+      <textarea 
+        id="noteInput" 
+        placeholder="Example:
+        Note: C4 | Start: 0.0 | Duration: 1.0 | Velocity: 100
+        Note: E4 | Start: 0.5 | Duration: 1.0 | Velocity: 90
+        Note: G4 | Start: 1.0 | Duration: 1.0 | Velocity: 80
+        Note: A4 | Start: 1.5 | Duration: 1.0 | Velocity: 70
+    " 
+        rows="10"></textarea>
+    </div>
 
-    <div class="output-container" id="outputContainer" style="display: none;">
-      <h3>Generated Template</h3>
-      <pre id="generatedTemplate"></pre>
-      <button class="copy-button" onclick="copyGeneratedTemplate()">Copy Template</button>
+    <!-- Step 3: Generate MIDI -->
+    <div class="section">
+      <h2>Step 3: Generate Your MIDI File</h2>
+      <label for="tempoInput">Specify the tempo (BPM):</label>
+      <input type="number" id="tempoInput" value="120" min="20" max="300" />
+      <button id="generateMidiBtn">Generate MIDI File</button>
     </div>
   </div>
 
-  <!-- Right Side: MIDI Tool -->
-  <div class="container container-right">
-    <h1>Advanced MIDI Generator</h1>
-    <h2>How to Use</h2>
-    <p>Input either single notes or chords using this format:</p>
-    <pre>
-Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
-Examples:
-- Single Note: Note: C4 | Start: 0.0 | Duration: 1.0 | Velocity: 100
-- Chord: Note: A2 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-          Note: C3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-          Note: E3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-    </pre>
-
-    <label for="tempoInput">Tempo (BPM):</label>
-    <input type="number" id="tempoInput" value="120" min="20" max="300" />
-
-    <label for="noteInput">Paste your note lines here:</label>
-    <textarea id="noteInput" placeholder="Paste your note lines here..." rows="10"></textarea>
-
-    <button onclick="generateDynamicMidiWithCounter()">Generate MIDI</button>
-  </div>
-
-  <!-- Inline JavaScript -->
-  <script type="module">
-    import { incrementCounter, updateCounterDisplay } from "./app.js";
-
-
-    window.generateTemplate = function () {
-    incrementCounter("templateGenerator") // Increment the template counter
-      .then(() => {
-        console.log("Template counter incremented successfully");
-      })
-      .catch((error) => {
-        console.error("Error incrementing template counter:", error);
-        alert("Failed to update template counter. Please try again.");
-      });
-
-    const userQuery = document.getElementById("queryInput").value.trim();
-    if (!userQuery) {
-      alert("Please enter your query or requirements.");
-      return;
-    }
-
-      const template = `
-You are a professional producer and composer specializing in creating chord progressions and melodies for various genres. Your role is to craft unique, expressive, and musically rich progressions or melodies based on the details I provide. 
-
-I want you to create a chord progression or melody for me in the following format:
-
-Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
-
-Details:
-1. Specify whether the input is a **chord progression** or a **melody**.
-2. Provide a short summary in bullet points:
-   - Provide a meaningful and descriptive name for the file or chord (e.g., "A_minor7_chord," "G7_sus4_chord" for individual chords, or "AfroHouse_Progression_Amin" for a chord progression). For melodies, use a clear and relevant name such as "Melody_Soft_Piano_AfroHouse" to reflect its style and purpose.
-   - Progression: List the chord names (e.g., Fmin9, Dbmaj9, etc.).
-   - Style and mood.
-   - Instrumentation or sound characteristics (e.g., grand piano, soft pads, etc.).
-   - Any notable musical aspects (e.g., emotional, jazzy, harmonic extensions).
-3. For chord progressions:
-   - Use multiple notes with the same \`Start\` time to form a chord.
-   - Each chord should last for [duration in beats or bars].
-4. For melodies:
-   - Use one note per line with different \`Start\` times to create a sequence.
-   - Specify the timing and duration for each note.
-5. Output the summary first, followed by the formatted notes (copy & paste ready).
-
-Query:
-${userQuery}
-
-**Example Outputs:**
-Formatted Notes:
-Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100
-
-**Important:**
-make it copy-paste-ready.
-`;
-
-      document.getElementById("generatedTemplate").textContent = template.trim();
-      document.getElementById("outputContainer").style.display = "block";
-
-      // Update displayed counters
-      updateCounterDisplay();
-    };
-
-    // Update counters on page load
-    updateCounterDisplay();
-    
-    window.copyGeneratedTemplate = function () {
-      const templateText = document.getElementById("generatedTemplate").textContent;
-      navigator.clipboard.writeText(templateText).then(() => {
-        alert("Template copied to clipboard!");
-      }).catch(err => {
-        alert("Failed to copy the template.");
-        console.error("Copy error:", err);
-      });
-    };
-
-    window.generateDynamicMidiWithCounter = function () {
-    // Increment the MIDI Generator counter
-      incrementCounter("midiGenerator")
-        .then(() => {
-          console.log("MIDI Generator counter incremented successfully");
-          updateCounterDisplay(); // Update the displayed counters
-        })
-        .catch((error) => {
-          console.error("Error incrementing MIDI Generator counter:", error);
-          alert("Failed to update MIDI Generator counter. Please try again.");
-        });
-
-      // Generate the MIDI file
-      generateDynamicMidi();
-  };
-
-</script>
+  <!-- Include JavaScript -->
+  <script src="./js/jsmidgen.js"></script>
+  <script type="module" src="./js/app.js"></script>
 </body>
+<footer class="footer">
+  <p>Made with ❤️ by Or Sela</p>
+  <p>
+    <span>💬</span> For any requests, feedback, or questions, feel free to contact me! 
+    <span>🙏</span> I’d love to hear from you and make it better! <span>🎶</span>
+  </p>
+  <p>
+    <a href="mailto:orsela25@gmail.com" target="_blank">
+      📧 Email Me
+    </a> |
+    <a href="https://www.facebook.com/bigsela/" target="_blank">
+      🌐 Facebook
+    </a> |
+    <a href="https://www.instagram.com/im.or.sela/" target="_blank">
+      📸 Instagram
+    </a>
+  </p>
+</footer>
+</div>
 </html>

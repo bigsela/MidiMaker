@@ -1,0 +1,272 @@
+/* General styles */
+body {
+  font-family: 'Poppins', Arial, sans-serif; /* Use Poppins */
+  margin: 0;
+  padding: 0;
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+.header h1 {
+  font-family: 'Poppins', sans-serif; /* Bold and modern */
+  font-weight: 700; /* Bold for the title */
+  font-size: 2.5rem; /* Slightly larger for a modern feel */
+  color: #ff9800; /* Retain the orange color */
+}
+
+/* App container */
+.app-container {
+  max-width: 960px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.header p {
+  font-size: 1rem;
+  color: #ffcc80;
+}
+
+/* Counters section */
+div.counters {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+div.counters h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #ffcc80;
+}
+
+div.counters p {
+  margin: 5px 0;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.counters p span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffe082;
+}
+
+/* Main content sections */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background-color: #222;
+  padding: 20px; /* Adds space inside the section */
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.section h2 {
+  color: #ffcc80;
+  margin-bottom: 15px;
+}
+
+textarea, input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #fff;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: #ff9800;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.output-container {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #333;
+  border-radius: 8px;
+}
+
+
+.output-container pre {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* General button styles */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Primary Button (Send to ChatGPT) */
+.primary-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.primary-button:hover {
+  background-color: #0056b3;
+}
+
+/* Secondary Button (Copy Template) */
+.secondary-button {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.secondary-button:hover {
+  background-color: #5a6268;
+}
+
+/* Button Container (optional for layout adjustment) */
+#outputContainer button {
+  margin: 10px 5px 0 0; /* Space between buttons */
+}
+
+
+.counters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 1rem; /* Slightly increase font size for better readability */
+  color: #ffcc80;
+}
+
+.counter-item {
+  background-color: #222;
+  padding: 8px 15px; /* Adjust padding for better spacing */
+  border-radius: 20px; /* Rounded "bubble" look */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5; /* Ensure consistent line height */
+}
+
+.counter-item span {
+  margin-left: 5px; /* Add space between the text and the number */
+  font-size: 1rem; /* Ensure font size consistency */
+  vertical-align: baseline; /* Align text vertically */
+}
+
+.section.counters {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  border-radius: 0px;
+  background-color: transparent;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 20px;
+  background-color: #111; /* Match the page background */
+  color: #ffcc80; /* Light orange text color */
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+}
+
+.footer a {
+  color: #ff9800; /* Orange link color */
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Top Bar Styling */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #111; /* Match the website background */
+  border-bottom: 1px solid #444;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+}
+
+/* Logo Styling */
+.logo {
+  height: 100px; /* Adjust for larger logo size */
+  width: auto;
+   text-align: center;
+  margin-right: 20px; /* Space between logo and title */
+}
+
+/* Title Styling */
+.app-title {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.8rem; /* Slightly larger font size */
+  font-weight: 700;
+  color: #ffcc80; /* Light orange for title text */
+  text-align: center;
+  flex-grow: 1; /* Ensures the title is centered */
+}
+
+/* Optional: For navigation links, if needed later */
+.top-bar nav {
+  margin-left: auto; /* Push navigation to the far right */
+}
