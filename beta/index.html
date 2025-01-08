@@ -8,56 +8,51 @@
   <title>Advanced MIDI Generator</title>
 </head>
 <body>
-  <div class="container container-left">
-    <h1>Dynamic MIDI Template Generator</h1>
-    <div class="counters">
-      <h3>Page Statistics:</h3>
-      <p>Page Views: <span id="pageViewsCounter">Loading...</span></p>
-      <p>Templates Generated: <span id="templateCounter">Loading...</span></p>
-      <p>MIDI Files Generated: <span id="midiCounter">Loading...</span></p>
+  <div class="app-container">
+    <div class="header">
+      <h1>Advanced MIDI Generator</h1>
+      <p>Create and download MIDI files effortlessly with our intuitive tool.</p>
     </div>
-    <div>
-      <h2>Create Your Custom ChatGPT Query</h2>
-      <p>Fill out the fields below to dynamically generate a query template for creating chords or melodies. Once generated, you can copy and paste it into ChatGPT.</p>
 
-      <label for="queryInput">Enter your query or requirements:</label>
-      <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+    <div class="counters">
+      <h3>Activity Stats</h3>
+      <p>Page Views: <span id="pageViewsCounter">0</span></p>
+      <p>Templates Generated: <span id="templateCounter">0</span></p>
+      <p>MIDI Downloads: <span id="midiCounter">0</span></p>
+    </div>
 
-      <button id="generateTemplateBtn">Generate Template</button>
+    <div class="main-content">
+      <div class="section">
+        <h2>Create Your Custom Query</h2>
+        <label for="queryInput">Enter your query or requirements:</label>
+        <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+        <button id="generateTemplateBtn">Generate Template</button>
+        <div id="outputContainer" class="output-container" style="display: none;">
+          <h3>Generated Template</h3>
+          <pre id="generatedTemplate"></pre>
+          <button id="copyTemplateBtn" class="copy-button">Copy Template</button>
+        </div>
+      </div>
 
-      <div id="outputContainer" class="output-container" style="display: none;">
-        <h3>Generated Template</h3>
-        <pre id="generatedTemplate"></pre>
-        <button id="copyTemplateBtn" class="copy-button">Copy Template</button>
+      <div class="section">
+        <h2>Generate MIDI</h2>
+        <label for="tempoInput">Tempo (BPM):</label>
+        <input type="number" id="tempoInput" value="120" min="20" max="300" />
+        <label for="noteInput">Paste your note lines here:</label>
+        <textarea 
+        id="noteInput" 
+        placeholder="Example:
+        Note: C4 | Start: 0.0 | Duration: 1.0 | Velocity: 100
+        Note: E4 | Start: 0.5 | Duration: 1.0 | Velocity: 90
+        Note: G4 | Start: 1.0 | Duration: 1.0 | Velocity: 80
+        Note: A4 | Start: 1.5 | Duration: 1.0 | Velocity: 70
+    " 
+        rows="10"></textarea>
+        <button id="generateMidiBtn">Generate MIDI</button>
       </div>
     </div>
   </div>
-
-  <div class="container container-right">
-    <h1>Advanced MIDI Generator</h1>
-    <h2>How to Use</h2>
-    <p>Input either single notes or chords using this format:</p>
-    <pre>
-Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
-Examples:
-Note: A2 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-Note: C3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-Note: E3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
-    </pre>
-
-    <label for="tempoInput">Tempo (BPM):</label>
-    <input type="number" id="tempoInput" value="120" min="20" max="300" />
-
-    <label for="noteInput">Paste your note lines here:</label>
-    <textarea id="noteInput" placeholder="Paste your note lines here..." rows="10"></textarea>
-
-    <button id="generateMidiBtn">Generate MIDI</button>
-  </div>
-
-  <div id="pageViewsCounter" style="display:none;">0</div>
-  <div id="templateCounter" style="display:none;">0</div>
-  <div id="midiCounter" style="display:none;">0</div>
-
-  <script src="./js/jsmidgen.js"></script></body>
-  <script type="module" src="./js/app.js"></script></body>
+  <script src="./js/jsmidgen.js"></script>
+  <script type="module" src="./js/app.js"></script>
+</body>
 </html>
