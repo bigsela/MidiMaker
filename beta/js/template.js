@@ -24,9 +24,28 @@ Details:
 Query:
 ${queryInput}
 
-**Example Outputs:**
-Formatted Notes:
-Note: F3 | Start: 0.0 | Duration: 8.0 | Velocity: 100
+**Example Outputs for chord progression:*
+Name: Classic_4_Chord_Progression_CGAmF
+Progression: Cmaj, Gmaj, Amin, Fmaj
+Style and Mood: Classic pop/house, uplifting and universally familiar.
+Instrumentation: Grand piano or a bright synth.
+Notable Musical Aspects: Simple and timeless, perfect for a range of genres from pop to electronic.
+
+Note: C2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
+Note: E2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
+Note: G2 | Start: 0.0 | Duration: 8.0 | Velocity: 100
+
+Note: G1 | Start: 8.0 | Duration: 8.0 | Velocity: 100
+Note: B1 | Start: 8.0 | Duration: 8.0 | Velocity: 100
+Note: D2 | Start: 8.0 | Duration: 8.0 | Velocity: 100
+
+Note: A1 | Start: 16.0 | Duration: 8.0 | Velocity: 100
+Note: C2 | Start: 16.0 | Duration: 8.0 | Velocity: 100
+Note: E2 | Start: 16.0 | Duration: 8.0 | Velocity: 100
+
+Note: F1 | Start: 24.0 | Duration: 8.0 | Velocity: 100
+Note: A1 | Start: 24.0 | Duration: 8.0 | Velocity: 100
+Note: C2 | Start: 24.0 | Duration: 8.0 | Velocity: 100
 
 **Important:**
 make it copy-paste-ready.
