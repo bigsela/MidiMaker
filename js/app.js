@@ -1,5 +1,7 @@
 import { generateTemplate } from "./template.js";
 import { copyToClipboard } from "./utils.js";
+import { generateDynamicMidi } from './midiCreator.js';
+
 
 // Check if running locally
 const isLocalHost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
@@ -35,4 +37,8 @@ document.getElementById("generateTemplateBtn").addEventListener("click", () => {
 document.getElementById("copyTemplateBtn").addEventListener("click", () => {
   const templateText = document.getElementById("generatedTemplate").textContent;
   copyToClipboard(templateText);
+});
+
+document.getElementById("generateMidiBtn").addEventListener("click", () => {
+  generateDynamicMidi();
 });
