@@ -1,5 +1,6 @@
 /* General styles */
 body {
+  font-size: 0.9rem; /* Reduce the default font size slightly */
   font-family: 'Poppins', Arial, sans-serif; /* Use Poppins */
   margin: 0;
   padding: 0;
@@ -50,7 +51,6 @@ div.counters {
 
 div.counters h3 {
   margin: 0 0 10px;
-  font-size: 1.2rem;
   color: #ffcc80;
 }
 
@@ -187,6 +187,7 @@ button:hover {
 }
 
 .counter-item {
+
   background-color: #222;
   padding: 8px 15px; /* Adjust padding for better spacing */
   border-radius: 20px; /* Rounded "bubble" look */
@@ -284,6 +285,10 @@ button:hover {
   font-size: 1rem; /* Consistent font size */
   color: #ffcc80; /* Match the theme color */
   line-height: 1.5;
+}
+
+.counters .counter-item {
+  font-size: 0.7rem; /* Adjust to make the text smaller */
 }
 
 .youtube-link {
