@@ -75,7 +75,7 @@ div.counters p span {
 
 .section {
   background-color: #222;
-  padding: 20px;
+  padding: 20px; /* Adds space inside the section */
   border-radius: 0px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -125,6 +125,7 @@ button:hover {
   border-radius: 8px;
 }
 
+
 .output-container pre {
   background-color: #444;
   color: #fff;
@@ -171,4 +172,61 @@ button:hover {
 /* Button Container (optional for layout adjustment) */
 #outputContainer button {
   margin: 10px 5px 0 0; /* Space between buttons */
+}
+
+
+.counters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  font-size: 1rem; /* Slightly increase font size for better readability */
+  color: #ffcc80;
+}
+
+.counter-item {
+  background-color: #222;
+  padding: 8px 15px; /* Adjust padding for better spacing */
+  border-radius: 20px; /* Rounded "bubble" look */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5; /* Ensure consistent line height */
+}
+
+.counter-item span {
+  margin-left: 5px; /* Add space between the text and the number */
+  font-size: 1rem; /* Ensure font size consistency */
+  vertical-align: baseline; /* Align text vertically */
+}
+
+.section.counters {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  border-radius: 0px;
+  background-color: transparent;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 20px;
+  background-color: #111; /* Match the page background */
+  color: #ffcc80; /* Light orange text color */
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+}
+
+.footer a {
+  color: #ff9800; /* Orange link color */
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
