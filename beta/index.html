@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/favicon.ico">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Advanced MIDI Generator</title>
+</head>
+<body>
+  <div class="container container-left">
+    <h1>Dynamic MIDI Template Generator</h1>
+    <div>
+      <h2>Create Your Custom ChatGPT Query</h2>
+      <p>Fill out the fields below to dynamically generate a query template for creating chords or melodies. Once generated, you can copy and paste it into ChatGPT.</p>
+
+      <label for="queryInput">Enter your query or requirements:</label>
+      <textarea id="queryInput" placeholder="Example: Create a 4-chord progression, calm and deep, for Afro House in the style of Black Coffee." rows="4"></textarea>
+
+      <button id="generateTemplateBtn">Generate Template</button>
+
+      <div id="outputContainer" class="output-container" style="display: none;">
+        <h3>Generated Template</h3>
+        <pre id="generatedTemplate"></pre>
+        <button id="copyTemplateBtn" class="copy-button">Copy Template</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container container-right">
+    <h1>Advanced MIDI Generator</h1>
+    <h2>How to Use</h2>
+    <p>Input either single notes or chords using this format:</p>
+    <pre>
+Note: [Note Name] | Start: [Start Time in beats] | Duration: [Duration in beats] | Velocity: [Volume (0-127)]
+Examples:
+Note: A2 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+Note: C3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+Note: E3 | Start: 0.0 | Duration: 4.0 | Velocity: 100
+    </pre>
+
+    <label for="tempoInput">Tempo (BPM):</label>
+    <input type="number" id="tempoInput" value="120" min="20" max="300" />
+
+    <label for="noteInput">Paste your note lines here:</label>
+    <textarea id="noteInput" placeholder="Paste your note lines here..." rows="10"></textarea>
+
+    <button id="generateMidiBtn">Generate MIDI</button>
+  </div>
+  <script src="./js/jsmidgen.js"></script></body>
+  <script type="module" src="./js/app.js"></script></body>
+</html>
