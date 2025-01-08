@@ -71,3 +71,37 @@ body {
     margin-bottom: 5px;
   }
   
+
+/* Style for the counters container */
+div.counters {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #222; /* Dark background */
+  border-radius: 8px;
+  color: #ff9800; /* Yellowish orange color */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual counter labels */
+div.counters h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #ffcc80; /* Lighter orange for labels */
+}
+
+/* Counter values */
+div.counters p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.counters p span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffe082; /* Even lighter for the numbers */
+}
