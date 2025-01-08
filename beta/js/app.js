@@ -9,9 +9,13 @@ const isLocalHost = location.hostname === "localhost" || location.hostname === "
 // Skip counters for local environment
 if (!isLocalHost) {
   console.log("Running in production; initializing counters...");
-  document.getElementById("pageViewsCounter").textContent = "0";
-  document.getElementById("templateCounter").textContent = "0";
-  document.getElementById("midiCounter").textContent = "0";
+  const pageViewsCounter = document.getElementById("pageViewsCounter");
+  const templateCounter = document.getElementById("templateCounter");
+  const midiCounter = document.getElementById("midiCounter");
+
+  if (pageViewsCounter) pageViewsCounter.textContent = "0";
+  if (templateCounter) templateCounter.textContent = "0";
+  if (midiCounter) midiCounter.textContent = "0";
 } else {
   console.log("Counters are disabled in the local environment");
 }
