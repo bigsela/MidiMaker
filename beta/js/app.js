@@ -23,6 +23,7 @@ document.getElementById("generateTemplateBtn").addEventListener("click", async (
     return;
   }
 
+  // Generate the template
   const template = generateTemplate(queryInput);
 
   // Display the generated template
@@ -41,6 +42,31 @@ document.getElementById("generateTemplateBtn").addEventListener("click", async (
 document.getElementById("copyTemplateBtn").addEventListener("click", () => {
   const templateText = document.getElementById("generatedTemplate").textContent;
   copyToClipboard(templateText);
+});
+
+
+
+document.getElementById("sendToChatGPTBtn").addEventListener("click", () => {
+  console.log("Send to ChatGPT button clicked!");
+
+  const templateText = document.getElementById("generatedTemplate").textContent.trim();
+
+  if (!templateText) {
+    alert("No template found to send to ChatGPT.");
+    return;
+  }
+
+  // Generate the ChatGPT link
+  const chatGPTURL = `https://chatgpt.com/?q=${encodeURIComponent(templateText)}`;
+
+  // Open ChatGPT in a new tab
+  window.open(chatGPTURL, '_blank');
+
+  // Increment counter for ChatGPT usage if not local
+  if (!isLocalHost) {
+    incrementCounter("chatGPTUsage");
+    updateCounterDisplay();
+  }
 });
 
 // Add event listener for Generate MIDI button
