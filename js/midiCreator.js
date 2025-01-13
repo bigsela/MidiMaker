@@ -108,25 +108,32 @@ export function generateDynamicMidi() {
       lastTick = startTick;
     });
 
-    // Convert MIDI to Base64 for downloading
+    // Convert MIDI to bytes
     const midiBytes = file.toBytes();
     const base64 = btoa(
       midiBytes
         .split("")
-        .map(char => String.fromCharCode(char.charCodeAt(0) & 0xFF))
+        .map(char => String.fromCharCode(char.charCodeAt(0) & 0xff))
         .join("")
     );
 
-    // Trigger download
-    const link = document.createElement("a");
-    link.href = "data:audio/midi;base64," + base64;
-    link.download = "dynamic_notes.mid";
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Set the Base64 URL for preview
+    const previewMidiPlayer = document.querySelector("midi-player");
+    previewMidiPlayer.src = "data:audio/midi;base64," + base64;
 
-    alert("MIDI file 'dynamic_notes.mid' has been downloaded!");
+    // Display the download button
+    const downloadMidiBtn = document.getElementById("downloadMidiBtn");
+    downloadMidiBtn.style.display = "inline-block";
+
+    // Configure the download button
+    downloadMidiBtn.onclick = () => {
+      const downloadLink = document.createElement("a");
+      downloadLink.href = "data:audio/midi;base64," + base64;
+      downloadLink.download = "dynamic_notes.mid";
+      downloadLink.click();
+    };
+
+    alert("Your MIDI file is ready for preview and download!");
   } catch (error) {
     console.error("Error generating MIDI:", error);
     alert("An error occurred while generating the MIDI file. Check the console for details.");
