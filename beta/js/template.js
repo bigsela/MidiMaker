@@ -50,5 +50,7 @@ Note: A1 | Start: 24.0 | Duration: 8.0 | Velocity: 100
 Note: C2 | Start: 24.0 | Duration: 8.0 | Velocity: 100
 
 **Important:**
-make it copy-paste-ready - *do not* mention chord names or other stuff under the formatted notes!
+* Each Note should be in a separate line
+* A line separates between chords
+* In a snippet, with copy snippet option
 `.trim();
