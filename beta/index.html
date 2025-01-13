@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/styles.css">
   <title>Advanced MIDI Generator</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
 </head>
 <body>
   <div class="top-bar">
@@ -72,6 +73,21 @@
       <input type="number" id="tempoInput" value="120" min="20" max="300" />
       <button id="generateMidiBtn">Generate MIDI File</button>
     </div>
+  </div>
+  <div class="section">
+    <h2>Step 4: Preview and Download Your MIDI File</h2>
+  
+    <!-- MIDI Player with Piano Roll Visualizer -->
+    <midi-player
+      src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
+      sound-font visualizer="#myPianoRollVisualizer">
+    </midi-player>
+  
+    <midi-visualizer type="piano-roll" id="myPianoRollVisualizer"
+      src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
+    </midi-visualizer>
+    
+    <button id="downloadMidiBtn" class="primary-button" style="display: none;">Download MIDI File</button>
   </div>
 
   <!-- Include JavaScript -->

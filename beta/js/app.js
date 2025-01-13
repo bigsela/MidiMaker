@@ -71,7 +71,27 @@ document.getElementById("sendToChatGPTBtn").addEventListener("click", () => {
 
 // Add event listener for Generate MIDI button
 document.getElementById("generateMidiBtn").addEventListener("click", async () => {
-  generateDynamicMidi();
+  const midiFileURL = generateDynamicMidi(); // Get the temporary MIDI file URL
+
+  if (midiFileURL) {
+    // Set the MIDI file URL for the preview player
+    const previewMidiPlayer = document.querySelector("midi-player");
+    previewMidiPlayer.src = midiFileURL;
+
+    // Update the MIDI Visualizer source
+    const pianoRollVisualizer = document.getElementById("myPianoRollVisualizer");
+    pianoRollVisualizer.src = midiFileURL;
+
+    // Show and configure the download button
+    const downloadMidiBtn = document.getElementById("downloadMidiBtn");
+    downloadMidiBtn.style.display = "inline-block";
+    downloadMidiBtn.onclick = () => {
+      const downloadLink = document.createElement("a");
+      downloadLink.href = midiFileURL;
+      downloadLink.download = "dynamic_notes.mid";
+      downloadLink.click();
+    };
+  }
 
   // Increment MIDI counter
   if (!isLocalHost) {
@@ -79,3 +99,4 @@ document.getElementById("generateMidiBtn").addEventListener("click", async () =>
     await updateCounterDisplay();
   }
 });
+
