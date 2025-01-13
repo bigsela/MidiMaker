@@ -76,21 +76,28 @@
     
     <div class="section">
       <h2>Step 4: Preview and Download Your MIDI File</h2>
-      <!-- MIDI Player with Piano Roll Visualizer -->
-      <midi-player
-        src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid"
-        sound-font visualizer="#myPianoRollVisualizer">
-      </midi-player>
-      <midi-visualizer type="piano-roll" id="myPianoRollVisualizer"
-        src="https://cdn.jsdelivr.net/gh/cifkao/html-midi-player@2b12128/twinkle_twinkle.mid">
-      </midi-visualizer>
+      
+      
+      <div class="player-container">
+        <!-- Visualizer -->
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <!-- MIDI Player -->
+        <midi-player
+          sound-font
+          visualizer="#myVisualizer">
+        </midi-player>
+      </div>      
+      <!-- Download Button -->
       <button id="downloadMidiBtn" class="primary-button" style="display: none;">Download MIDI File</button>
     </div>
+    
   </div>
 
   <!-- Include JavaScript -->
   <script src="./js/jsmidgen.js"></script>
   <script type="module" src="./js/app.js"></script>
+  <script src="./js/midiPlayerDesign.js"></script>
+  
 </body>
 <footer class="footer">
   <p>Made with ❤️ by Or Sela</p>
